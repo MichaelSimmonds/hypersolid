@@ -280,8 +280,8 @@
         shape.rotate('yw', Math.PI * motion.y / bound);
       }
       else {
-        shape.rotate('xz', Math.PI * motion.x / bound);
-        shape.rotate('yz', Math.PI * motion.y / bound);
+        shape.rotate('xz', Math.PI * 21 / bound);
+        shape.rotate('yz', Math.PI * 21 / bound);
       }
 
       startCoords = currCoords;
