@@ -19,11 +19,10 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.js"></script>
-    <script src="sketch.js"></script>		
 		<script type="text/javascript" src="hypersolid.js"></script>
     <script type="text/javascript" src="hypersolid.shapebank.js"></script>
-    
-    
+
+
 	</head>
 	<body>
 		<canvas id="simplex-canvas">Unfortunately, your browser does not support coolness.</canvas>
@@ -38,108 +37,6 @@
       <label><input type="checkbox" name="rotate_xw" />Rotate xw</label><br/>
       <label><input type="checkbox" name="rotate_yw" />Rotate yw</label><br/>
 		</form>
-  <script type="text/javascript">
-  var MIKE = 0.003;
-
-	/* <![CDATA[ */ (function() {
-    var simplex = Hypersolid.Simplex();
-    var simplexView = Hypersolid.Viewport(simplex, document.getElementById('simplex-canvas'), {
-			width: 280,
-			height: 280,
-			scale: 2,
-			lineWidth: 3,
-			lineJoin: 'round'
-		});	
-    simplexView.draw();
-
-    var cube = Hypersolid.Hypercube();
-		var cubeView = Hypersolid.Viewport(cube, document.getElementById('hypercube-canvas'), {
-			width: 280,
-			height: 280,
-			scale: 2,
-			lineWidth: 3,
-			lineJoin: 'round'
-    });
-    cubeView.draw();
-
-    var cross = Hypersolid.Cross();
-		var crossView = Hypersolid.Viewport(cross, document.getElementById('cross-canvas'), {
-			width: 280,
-			height: 280,
-			scale: 2,
-			lineWidth: 3,
-			lineJoin: 'round'
-    });
-    crossView.draw();
-
-    var icosite = Hypersolid.Icositetrachoron();
-		var icositeView = Hypersolid.Viewport(icosite, document.getElementById('24cell-canvas'), {
-			width: 280,
-			height: 280,
-			scale: 2,
-			lineWidth: 3,
-			lineJoin: 'round'
-    });
-    icositeView.draw();	
-
-
-
-    // animation
-    options = document.getElementById('hypercube-options');
-    function render() {
-      if (options) {
-        checkboxes = options.getElementsByTagName('input');
-      }
-      if (options.rotate_xz.checked) {
-        rotate("xz", MIKE);
-      }
-      if (options.rotate_yz.checked) {
-        rotate("yz", MIKE);
-      }
-      if (options.rotate_xw.checked) {
-        rotate("xw", MIKE);
-      }
-      if (options.rotate_yw.checked) {
-        rotate("yw", MIKE);
-      }
-      if (options.rotate_xy.checked) {
-        rotate("xy", MIKE);
-      }
-      if (options.rotate_zw.checked) {
-        rotate("zw", MIKE);
-      }
-
-      
-    };
-
-    function rotate(plane, x) {
-      simplex.rotate(plane, x);
-      simplexView.draw();
-      cube.rotate(plane, x);
-      cubeView.draw();
-      cross.rotate(plane, x);
-      crossView.draw();
-      icosite.rotate(plane, x);
-      icositeView.draw();
-    };
-
-    // shim layer with setTimeout fallback
-    window.requestAnimFrame = window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame    ||
-    window.oRequestAnimationFrame      ||
-    window.msRequestAnimationFrame     ||
-    function( callback ){
-      window.setTimeout(callback, 1000 / 60);
-    };
-
-    (function animloop(){
-      requestAnimFrame(animloop);
-      render();
-      
-    })();
-  })(); // ]]>
-
-	</script>
+    <script type="text/javascript" src="hyperp5.js"></script>
 	</body>
 </html>
